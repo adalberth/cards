@@ -11,7 +11,6 @@
 			this.callbacks.push(func);
 		},
 		fire: function (data) {
-
 			var i, l = this.callbacks.length;
 			for (i = 0; i < l; i++) {
 				this.callbacks[i](data);
@@ -20,17 +19,19 @@
 	};
 	
 	
-	function EventMultiple(func,untilFire){
+	function EventMultiple(func,l){
 		this.func = func;
-		this.untilFire = untilFire;
-		this.count = 0;
+		this.l = l;
+		this.c = 0;
 	}
 	
 	EventMultiple.prototype = { 
 		constructor: EventMultiple,
 		fire:function(){
-			if(++this.count === this.untilFire){
+			this.c++;
+			if(this.c === this.l){
 				this.func();
+				this.c = 0;
 			}
 		}
 	};
@@ -40,7 +41,6 @@
 
 	function Events() {
 		this.events = [];
-		this.eventsMultiple = [];
 	}
 
 	Events.prototype = {
@@ -73,13 +73,6 @@
 			}
 		},
 		despatch: function (key, obj) {
-			
-			if(this.eventsMultiple[key]){
-				var data = obj || {};
-				this.eventsMultiple[key].fire(data);
-			}
-			
-			
 			if (this.events[key]) {
 				var data = obj || {};
 				this.events[key].fire(data);

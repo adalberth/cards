@@ -32,8 +32,8 @@
 		}
 
 		function loaded() {
-//			length--;
-//			if (length == 0) event.despatch('IMG_LOADED');
+			length--;
+			if (length == 0) event.despatch('IMG_LOADED');
 		}
 		
 	}
@@ -41,60 +41,11 @@
 	loadImages();
 	
 	$(document).ready(function(){
-		
+		event.despatch('DOCUMENT_READY');
 	})
 	
-	
-	event.on('ABEKAT', function(){
-		console.log('ABEKAT');
-	});	
-	
-	event.on('TIGER', function(){
-		console.log('TIGER');
-	});	
-	
-	event.on(['ABEKAT','GIRAFFEN','TIGER'], function(){
-		console.log('ABEKAT & GIRAFFEN & TIGER, EVENT');
-	});	
-	
-	event.on(['ABEKAT','GIRAFFEN'], function(){
-		console.log('ABEKAT & GIRAFFEN, EVENT');
-	});	
-	
-	
-	event.on('GIRAFFEN', function(){
-		console.log('GIRAFFEN, 1');
-	});	
-	
-	event.on('GIRAFFEN', function(){
-		console.log('GIRAFFEN, 2');
-	});	
-	
-	event.on(['ABEKAT','GIRAFFEN'], function(){
-		console.log('ABEKAT & GIRAFFEN, EVENT 2');
-	});	
-	
-	event.on(['ABEKAT','GIRAFFEN'], function(){
-		console.log('ABEKAT & GIRAFFEN, EVENT 3');
-	});	
-	
-	
-	// Despatch
-	event.despatch('GIRAFFEN');
-	
-	setTimeout(function(){
-		event.despatch('ABEKAT');
-	},500);
-	
-	
-	setTimeout(function(){
-		event.despatch('TIGER');
-	},1000);
-	
-//	event.on(['ABEKAT','GIRAFFEN'], function(){
-//		console.log('-> ABEKAT, GIRAFFEN extra');
-//	});	
-	
-	
+	event.on(['IMG_LOADED','DOCUMENT_READY'],function(){
+		console.log("Super Ready!");
+	})
 	
 }(jQuery))
