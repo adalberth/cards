@@ -1,8 +1,15 @@
 (function ($) {
 	'use strict';
 
+	/*
+	* System events.
+	*/
 	var event = new Events();
 	
+	
+	/*
+	* Creates and load the images of the deck
+	*/
 	function loadImages() {
 		
 		var prefix = ['h', 'd', 's', 'c'],
@@ -44,10 +51,18 @@
 
 	loadImages();
 
+	
+	
+	/*
+	* Start when document is ready
+	*/
 	$(document).ready(function () {
 		event.dispatch('DOCUMENT_READY');
 	})
 
+	/*
+	* Waits for the images is loaded and document ready.
+	*/
 	event.on(['IMG_LOADED', 'DOCUMENT_READY'], function (data) {
 		var deck = new Deck(data.deck);
 		var deckView = new DeckView(deck);
@@ -69,7 +84,10 @@
 		});
 	})
 
-
+	/*
+	* Deck Model
+	* Handling the deck
+	*/
 	function Deck(deck) {
 		this.deck = deck;
 		this.event = new Events();
@@ -129,6 +147,11 @@
 
 	window.Deck = Deck;
 
+	
+	/*
+	* Deck view
+	* handles the animations
+	*/
 	function DeckView(deck) {
 		this.deck = deck;
 		this.$cards = $('.cards');
