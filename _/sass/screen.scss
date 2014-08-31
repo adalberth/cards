@@ -1,8 +1,14 @@
+.container{
+	text-align: center;
+}
+
 .cards{
+	display: inline-block;
 	position: relative;
 	
+	height:130px;
 	margin-top: 20px;
-	margin-left: 20px;
+	left: -35px;
 	
 	img{
 		position: absolute;
