@@ -2,10 +2,11 @@
 	'use strict';
 
 	var event = new Events();
-
+	
 	function loadImages() {
+		
 		var prefix = ['h', 'd', 's', 'c'],
-			path = "http://lab.david/js/cards/_/images/cards/",
+			path = document.URL + "_/images/cards/",
 			size = {
 				width: 72,
 				height: 96
