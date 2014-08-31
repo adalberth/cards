@@ -1,0 +1,8 @@
+.cards {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.cards img {
+  position: absolute;
+}
